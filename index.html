@@ -65,6 +65,50 @@
         .ticket strong {
             color: #ffa500; /* Colore arancione per evidenziare le informazioni importanti */
         }
+
+        /* Media query per dispositivi mobili */
+        @media (max-width: 768px) {
+            .section {
+                background-size: cover;
+                background-position: center;
+                background-attachment: scroll; /* Disabilita l'effetto fisso sui dispositivi mobili */
+            }
+
+            .section:nth-of-type(1) {
+                background-image: url('background3-mobile.jpg'); /* Immagine per mobile per la prima sezione */
+            }
+
+            .section:nth-of-type(2) {
+                background-image: url('background4-mobile.jpg'); /* Immagine per mobile per la seconda sezione */
+            }
+
+            .section:nth-of-type(3) {
+                background-image: url('background1-mobile.jpg'); /* Immagine per mobile per la terza sezione */
+            }
+
+            .section:nth-of-type(4) {
+                background-image: url('background2-mobile.jpg'); /* Immagine per mobile per la quarta sezione */
+            }
+        }
+
+        /* Media query per schermi ancora più piccoli (smartphone in modalità verticale) */
+        @media (max-width: 480px) {
+            .section:nth-of-type(1) {
+                background-image: url('background3-small-mobile.jpg'); /* Immagine per schermi più piccoli */
+            }
+
+            .section:nth-of-type(2) {
+                background-image: url('background4-small-mobile.jpg'); /* Immagine per schermi più piccoli */
+            }
+
+            .section:nth-of-type(3) {
+                background-image: url('background1-small-mobile.jpg'); /* Immagine per schermi più piccoli */
+            }
+
+            .section:nth-of-type(4) {
+                background-image: url('background2-small-mobile.jpg'); /* Immagine per schermi più piccoli */
+            }
+        }
     </style>
 </head>
 <body>
