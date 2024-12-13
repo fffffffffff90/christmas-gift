@@ -32,6 +32,123 @@
         /* Stile per il pulsante interattivo */
         .button {
             background-color: rgba(0, 0, 0, 0.6); /* Sfondo semi-trasparente */
-            padding: 
+            padding: 20px 40px; /* Spaziatura interna del pulsante */
+            border-radius: 10px; /* Angoli arrotondati */
+            color: white; /* Colore del testo */
+            text-decoration: none; /* Rimuove la sottolineatura */
+            font-size: 24px; /* Dimensione del testo */
+            font-weight: bold; /* Testo in grassetto */
+            transition: background-color 0.3s; /* Effetto di transizione per il colore di sfondo */
+        }
 
+        .button:hover {
+            background-color: rgba(255, 165, 0, 0.8); /* Colore arancione acceso al passaggio del mouse */
+        }
+
+        /* Stile per il contenitore del biglietto */
+        .ticket {
+            background-color: rgba(0, 0, 0, 0.8); /* Sfondo nero semi-trasparente */
+            padding: 30px; /* Spaziatura interna */
+            border-radius: 15px; /* Angoli arrotondati */
+            text-align: left; /* Testo allineato a sinistra */
+            max-width: 400px; /* Larghezza massima del contenitore */
+            margin: auto; /* Centra il biglietto orizzontalmente */
+        }
+
+        .ticket h2 {
+            margin-bottom: 10px; /* Spaziatura inferiore per il titolo */
+        }
+
+        .ticket p {
+            margin-bottom: 5px; /* Spaziatura inferiore tra i paragrafi */
+        }
+
+        .ticket strong {
+            color: #ffa500; /* Colore arancione per evidenziare le informazioni importanti */
+        }
+
+        /* Media query per dispositivi mobili */
+        @media (max-width: 768px) {
+            .section {
+                background-attachment: scroll; /* Disabilita l'effetto fisso sui dispositivi mobili */
+            }
+
+            /* Impostazione delle immagini specifiche per schermi più piccoli */
+            .section:nth-of-type(1) {
+                background-image: url('background3-mobile.jpg');
+            }
+
+            .section:nth-of-type(2) {
+                background-image: url('background4-mobile.jpg');
+            }
+
+            .section:nth-of-type(3) {
+                background-image: url('background1-mobile.jpg');
+            }
+
+            .section:nth-of-type(4) {
+                background-image: url('background2-mobile.jpg');
+            }
+        }
+
+        /* Media query per schermi ancora più piccoli (smartphone in modalità verticale) */
+        @media (max-width: 480px) {
+            .section {
+                background-size: cover; /* Immagine di sfondo che copre interamente la sezione */
+                background-position: center; /* Centra l'immagine */
+            }
+
+            .section:nth-of-type(1) {
+                background-image: url('background3-small-mobile.jpg');
+            }
+
+            .section:nth-of-type(2) {
+                background-image: url('background4-small-mobile.jpg');
+            }
+
+            .section:nth-of-type(3) {
+                background-image: url('background1-small-mobile.jpg');
+            }
+
+            .section:nth-of-type(4) {
+                background-image: url('background2-small-mobile.jpg');
+            }
+
+            /* Ridimensiona il testo del pulsante per schermi più piccoli */
+            .button {
+                font-size: 18px; /* Riduce la dimensione del font del pulsante */
+                padding: 15px 30px; /* Riduce la spaziatura interna */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Prima sezione: Buon Natale -->
+    <div class="section" style="background-image: url('background3.jpg');">
+        <a href="#firenze" class="button">Buon natale amore, dovrai aspettare ancora un po' per ricevere il regalo</a>
+    </div>
+
+    <!-- Seconda sezione: Firenze -->
+    <div id="firenze" class="section" style="background-image: url('background4.jpg');">
+        <a href="#data" class="button">Firenze</a>
+    </div>
+
+    <!-- Terza sezione: 25 gennaio -->
+    <div id="data" class="section" style="background-image: url('background1.jpg');">
+        <a href="#biglietto" class="button">25 gennaio</a>
+    </div>
+
+    <!-- Quarta sezione: Biglietto del concerto -->
+    <div id="biglietto" class="section" style="background-image: url('background2.jpg');">
+        <div class="ticket">
+            <h2>Candlelight Ticket</h2> <!-- Titolo del biglietto -->
+            <p><strong>Data:</strong> 25 gennaio</p> <!-- Data dell'evento -->
+            <p><strong>Luogo:</strong> Firenze, Cattedrale dell'immagine</p> <!-- Luogo dell'evento -->
+            <p><strong>Orario:</strong> 21:30</p> <!-- Orario dell'evento -->
+        </div>
+    </div>
+</body>
+</html>
+
+        
 
