@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regalo di Natale - Candlelight</title>
+    
+    <!-- Caricamento efficiente delle risorse -->
+    <link rel="preload" href="audio.mp3" as="audio">
+    <link rel="preload" href="background-intro.jpg" as="image">
+    <link rel="preload" href="background3.jpg" as="image">
+    <link rel="preload" href="background4.jpg" as="image">
+    <link rel="preload" href="background1.jpg" as="image">
+    <link rel="preload" href="background2.jpg" as="image">
+    
     <style>
         /* Resetta i margini e i padding per tutti gli elementi */
         * {
@@ -16,6 +25,32 @@
             font-family: Arial, sans-serif; /* Font leggibile e moderno */
             color: white; /* Testo in bianco per contrastare con lo sfondo */
             overflow-x: hidden; /* Impedisce lo scorrimento orizzontale */
+        }
+           /* Spinner di caricamento */
+        #loading-spinner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .spinner {
+            border: 4px solid transparent;
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* Effetto fade in per le sezioni */
@@ -124,9 +159,14 @@
             border-radius: 10px; /* Angoli arrotondati */
             color: white; /* Testo bianco */
       }
+      
     </style>
 </head>
 <body>
+    <!-- Spinner di caricamento -->
+    <div id="loading-spinner">
+        <div class="spinner"></div>
+    </div>
 
     <!-- Traccia audio -->
     <audio id="background-audio" loop>
