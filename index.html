@@ -5,14 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regalo di Natale - Candlelight</title>
     
-    <!-- Caricamento efficiente delle risorse -->
-    <link rel="preload" href="audio.mp3" as="audio">
-    <link rel="preload" href="background-intro.jpg" as="image">
-    <link rel="preload" href="background3.jpg" as="image">
-    <link rel="preload" href="background4.jpg" as="image">
-    <link rel="preload" href="background1.jpg" as="image">
-    <link rel="preload" href="background2.jpg" as="image">
-    
     <style>
         /* Resetta i margini e i padding per tutti gli elementi */
         * {
@@ -154,7 +146,7 @@
             audio.play().catch((error) => {
                 console.error("Errore nella riproduzione dell'audio:", error);
             });
-        
+            });
 
             // Fade in delle sezioni quando l'utente scorre
             const sections = document.querySelectorAll('.section');
