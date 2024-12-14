@@ -1,10 +1,9 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regalo di Natale - Candlelight</title>
-    
     <style>
         /* Resetta i margini e i padding per tutti gli elementi */
         * {
@@ -18,7 +17,6 @@
             color: white; /* Testo in bianco per contrastare con lo sfondo */
             overflow-x: hidden; /* Impedisce lo scorrimento orizzontale */
         }
-         
 
         /* Effetto fade in per le sezioni */
         .section {
@@ -126,11 +124,9 @@
             border-radius: 10px; /* Angoli arrotondati */
             color: white; /* Testo bianco */
       }
-      
     </style>
 </head>
 <body>
-    
 
     <!-- Traccia audio -->
     <audio id="background-audio" loop>
@@ -139,13 +135,16 @@
     </audio>
 
     <script>
-        
-        // Sblocca l'audio al primo clic su qualsiasi parte della pagina
-        document.addEventListener('click', () => {
+        // Sblocca l'audio al primo clic su qualsiasi pulsante
+        document.addEventListener("DOMContentLoaded", () => {
             const audio = document.getElementById("background-audio");
-            audio.play().catch((error) => {
-                console.error("Errore nella riproduzione dell'audio:", error);
-            });
+            const firstButton = document.querySelector(".section a.button");
+
+            // Riproduce l'audio al clic del primo pulsante
+            firstButton.addEventListener("click", () => {
+                audio.play().catch((error) => {
+                    console.error("Errore nella riproduzione dell'audio:", error);
+                });
             });
 
             // Fade in delle sezioni quando l'utente scorre
@@ -216,7 +215,7 @@
                 } else if (diff < 0) {
                     countdownText.textContent = "Spero tanto ti sia piaciuto, ti amo";
                 } else {
-                    countdownText.textContent = `Mancano ${days} giorni ${hours} ore ${minutes} minuti e ${seconds} secondi al concerto!`;
+                    countdownText.textContent = Mancano ${days} giorni ${hours} ore ${minutes} minuti e ${seconds} secondi al concerto!;
                 }
             };
                         // Aggiornamento del countdown ogni secondo
