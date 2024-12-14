@@ -21,7 +21,7 @@
         /* Effetto fade in per le sezioni */
         .section {
             opacity: 0;
-            transition: opacity 2s ease-in-out; /* Aumentato il tempo per una transizione più graduale */
+            transition: opacity 2s ease-in-out, filter 2s ease-in-out; /* Aggiungi una transizione per il filtro (blur) */
             position: relative; /* Necessario per applicare il blur solo sullo sfondo */
         }
 
@@ -51,7 +51,8 @@
             right: 0;
             bottom: 0;
             background: inherit;
-            filter: blur(3px); /* Blur applicato solo allo sfondo */
+            filter: blur(10px); /* Blur iniziale alto */
+            transition: filter 2s ease-in-out; /* Aggiungi una transizione fluida per il blur */
             z-index: -1; /* Assicura che l'immagine sia dietro gli altri contenuti */
         }
 
@@ -217,6 +218,7 @@
             <p><strong>Orario:</strong> 21:30</p> <!-- Orario dell'evento -->
         </div>
     </div>
+
 
 
 </body>
