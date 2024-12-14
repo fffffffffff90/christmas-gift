@@ -124,18 +124,18 @@
 </head>
 <body>
     <!-- Traccia audio -->
-    <audio id="background-audio" loop>
+    <audio id="background-audio" autoplay loop muted>
         <source src="audio.mp3" type="audio/mpeg">
         Il tuo browser non supporta il tag audio.
     </audio>
 
     <script>
-        // Avvia la riproduzione audio quando l'utente interagisce con la pagina
-        document.body.addEventListener('click', () => {
-            const audio = document.getElementById('background-audio');
-            if (audio.paused) {
-                audio.play();
-            }
+        window.addEventListener("load", () => {
+            const audio = document.getElementById("background-audio");
+            audio.muted = false; // Rimuove il mute appena la pagina si carica
+            audio.play().catch(error => {
+                console.error("Autoplay bloccato dal browser. Interazione richiesta:", error);
+            });
         });
     </script>
 
@@ -157,10 +157,11 @@
     <!-- Quarta sezione: Biglietto del concerto -->
     <div id="biglietto" class="section" style="background-image: url('background2.jpg');">
         <div class="ticket">
-            <h2>Candlelight Ticket</h2>
-            <p><strong>Data:</strong> 25 gennaio</p>
-            <p><strong>Luogo:</strong> Firenze, Cattedrale dell'immagine</p>
-            <p><strong>Orario:</strong> 21:30</p>
+            <h2>Candlelight Ticket</h2> <!-- Titolo del biglietto -->
+            <p><strong>Data:</strong> 25 gennaio</p> <!-- Data dell'evento -->
+            <p><strong>Luogo:</strong> Firenze, Cattedrale dell'immagine</p> <!-- Luogo dell'evento -->
+            <p><strong>Orario:</strong> 21:30</p> <!-- Orario dell'evento -->
         </div>
     </div>
 </body>
+</html>
