@@ -46,28 +46,6 @@
             background-color: rgba(255, 165, 0, 0.8); /* Colore arancione acceso al passaggio del mouse */
         }
 
-        /* Stile per il contenitore del biglietto */
-        .ticket {
-            background-color: rgba(0, 0, 0, 0.8); /* Sfondo nero semi-trasparente */
-            padding: 30px; /* Spaziatura interna */
-            border-radius: 15px; /* Angoli arrotondati */
-            text-align: left; /* Testo allineato a sinistra */
-            max-width: 400px; /* Larghezza massima del contenitore */
-            margin: auto; /* Centra il biglietto orizzontalmente */
-        }
-
-        .ticket h2 {
-            margin-bottom: 10px; /* Spaziatura inferiore per il titolo */
-        }
-
-        .ticket p {
-            margin-bottom: 5px; /* Spaziatura inferiore tra i paragrafi */
-        }
-
-        .ticket strong {
-            color: #ffa500; /* Colore arancione per evidenziare le informazioni importanti */
-        }
-
         /* Media query per dispositivi mobili */
         @media (max-width: 768px) {
             .section {
@@ -88,13 +66,13 @@
             /* Terza sezione: sposta l'immagine verso l'alto di 10% e a sinistra di 2.5% */
             .section:nth-of-type(3) {
                 background-image: url('background4-mobile.jpg');
-                background-position: 97.5% 5%; /* Sposta l'immagine 2.5% a sinistra e 10% verso l'alto */
+                background-position: calc(50% - 2%) calc(50% - 5%); /* Sposta l'immagine 2.5% a sinistra e 10% verso l'alto */
             }
 
             /* Quarta sezione: sposta l'immagine verso sinistra di 5% */
             .section:nth-of-type(4) {
                 background-image: url('background1-mobile.jpg');
-                background-position: 95% center; /* Sposta l'immagine verso destra del 5% */
+                background-position: 95% center; /* Sposta l'immagine verso destra a del 5% */
             }
 
             .section:nth-of-type(5) {
@@ -120,7 +98,7 @@
 
             .section:nth-of-type(3) {
                 background-image: url('background4-small-mobile.jpg');
-                background-position: 97.5% 10%; /* Sposta l'immagine 2.5% a sinistra e 10% verso l'alto */
+                background-position: calc(50% - 2%) calc(50% - 5%); /* Sposta l'immagine 2.5% a sinistra e 10% verso l'alto */
             }
 
             .section:nth-of-type(4) {
