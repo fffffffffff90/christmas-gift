@@ -75,7 +75,7 @@
 
             /* Impostazione delle immagini specifiche per schermi più piccoli */
             .section:nth-of-type(1) {
-                background-image: url('background-start-mobile.jpg');
+                background-image: url('background-intro-mobile.jpg');
             }
 
             .section:nth-of-type(2) {
@@ -103,7 +103,7 @@
             }
 
             .section:nth-of-type(1) {
-                background-image: url('background-start-small-mobile.jpg');
+                background-image: url('background-intro-small-mobile.jpg');
             }
 
             .section:nth-of-type(2) {
@@ -132,42 +132,46 @@
 </head>
 <body>
     <!-- Traccia audio -->
-    <audio id="background-audio" autoplay loop muted>
+    <audio id="background-audio" loop>
         <source src="audio.mp3" type="audio/mpeg">
         Il tuo browser non supporta il tag audio.
     </audio>
 
     <script>
-        window.addEventListener("load", () => {
+        // Sblocca l'audio al primo clic su qualsiasi pulsante
+        document.addEventListener("DOMContentLoaded", () => {
             const audio = document.getElementById("background-audio");
-            audio.muted = false; // Rimuove il mute appena la pagina si carica
-            audio.play().catch(error => {
-                console.error("Autoplay bloccato dal browser. Interazione richiesta:", error);
+            const firstButton = document.querySelector(".section a.button");
+
+            firstButton.addEventListener("click", () => {
+                audio.play().catch((error) => {
+                    console.error("Errore nella riproduzione dell'audio:", error);
+                });
             });
         });
     </script>
 
-    <!-- Sezione iniziale: Scopri il regalo -->
-    <div class="section" style="background-image: url('background-start.jpg');">
+    <!-- Prima sezione: Introduzione -->
+    <div class="section" style="background-image: url('background-intro.jpg');">
         <a href="#natale" class="button">Clicca per scoprire il tuo regalo</a>
     </div>
 
-    <!-- Prima sezione: Buon Natale -->
+    <!-- Seconda sezione: Buon Natale -->
     <div id="natale" class="section" style="background-image: url('background3.jpg');">
         <a href="#firenze" class="button">Buon natale amore, dovrai aspettare ancora un po' per ricevere il tuo regalo</a>
     </div>
 
-    <!-- Seconda sezione: Firenze -->
+    <!-- Terza sezione: Firenze -->
     <div id="firenze" class="section" style="background-image: url('background4.jpg');">
         <a href="#data" class="button">Firenze</a>
     </div>
 
-    <!-- Terza sezione: 25 gennaio -->
+    <!-- Quarta sezione: 25 gennaio -->
     <div id="data" class="section" style="background-image: url('background1.jpg');">
         <a href="#biglietto" class="button">25 gennaio</a>
     </div>
 
-    <!-- Quarta sezione: Biglietto del concerto -->
+    <!-- Quinta sezione: Biglietto del concerto -->
     <div id="biglietto" class="section" style="background-image: url('background2.jpg');">
         <div class="ticket">
             <h2>Candlelight Ticket</h2> <!-- Titolo del biglietto -->
