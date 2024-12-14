@@ -1,4 +1,4 @@
-<!DOCTYPE html>   
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -18,6 +18,17 @@
             overflow-x: hidden; /* Impedisce lo scorrimento orizzontale */
         }
 
+        /* Effetto fade in per le sezioni */
+        .section {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Fade in quando la sezione è visibile */
+        .section.visible {
+            opacity: 1;
+        }
+
         /* Stile per le sezioni che occupano tutta la schermata */
         .section {
             display: flex;
@@ -28,6 +39,7 @@
             background-size: cover; /* Assicura che l'immagine copra tutta l'area */
             background-position: center; /* Centra l'immagine */
             background-repeat: no-repeat; /* Impedisce la ripetizione dell'immagine */
+            filter: blur(1px); /* Aggiungi effetto di sfocatura per il background */
         }
 
         /* Stile per il pulsante interattivo */
@@ -39,11 +51,12 @@
             text-decoration: none; /* Rimuove la sottolineatura */
             font-size: 24px; /* Dimensione del testo */
             font-weight: bold; /* Testo in grassetto */
-            transition: background-color 0.3s; /* Effetto di transizione per il colore di sfondo */
+            transition: background-color 0.3s, transform 0.2s; /* Aggiunta transizione per il "rimbalzo" */
         }
 
         .button:hover {
             background-color: rgba(255, 165, 0, 0.8); /* Colore arancione acceso al passaggio del mouse */
+            transform: scale(1.1); /* Rimbalzo */
         }
 
         /* Stile per il contenitore del biglietto */
@@ -68,79 +81,33 @@
             color: #ffa500; /* Colore arancione per evidenziare le informazioni importanti */
         }
 
-       /* Media query per dispositivi mobili */
+        /* Media query per dispositivi mobili */
         @media (max-width: 768px) {
             .section {
                 background-attachment: scroll; /* Disabilita l'effetto fisso sui dispositivi mobili */
             }
 
-            /* Impostazione delle immagini specifiche per schermi più piccoli */
-            .section:nth-of-type(1) {
-                background-image: url('background-intro-mobile.jpg');
-            }
-
-            /* Seconda sezione: sposta l'immagine 10% a destra */
-            .section:nth-of-type(2) {
-                background-image: url('background3-mobile.jpg');
-                background-position: 7.5% center; /* Sposta l'immagine verso sinistra di 7.5% */
-            }
-
-            /* Terza sezione: sposta l'immagine verso l'alto di 10% e a sinistra di 2.5% */
-            .section:nth-of-type(3) {
-                background-image: url('background4-mobile.jpg');
-                background-position: calc(50% - 2%) calc(50% - 5%); /* Sposta l'immagine 2.5% a sinistra e 10% verso l'alto */
-            }
-
-            /* Quarta sezione: sposta l'immagine verso sinistra di 5% */
-            .section:nth-of-type(4) {
-                background-image: url('background1-mobile.jpg');
-                background-position: 95% center; /* Sposta l'immagine verso destra a del 5% */
-            }
-
-            .section:nth-of-type(5) {
-                background-image: url('background2-mobile.jpg');
-            }
-        
-
-        /* Media query per schermi ancora più piccoli (smartphone in modalità verticale) */
-        @media (max-width: 480px) {
-            .section {
-                background-size: cover; /* Immagine di sfondo che copre interamente la sezione */
-                background-position: center; /* Centra l'immagine */
-            }
-
-            .section:nth-of-type(1) {
-                background-image: url('background-intro-small-mobile.jpg');
-            }
-
-            .section:nth-of-type(2) {
-                background-image: url('background3-small-mobile.jpg');
-                background-position: 7.5% center; /* Sposta l'immagine verso destra di 7,5% */
-            }
-
-            .section:nth-of-type(3) {
-                background-image: url('background4-small-mobile.jpg');
-                background-position: calc(50% - 2%) calc(50% - 5%); /* Sposta l'immagine 2.5% a sinistra e 10% verso l'alto */
-            }
-
-            .section:nth-of-type(4) {
-                background-image: url('background1-small-mobile.jpg');
-                background-position: 95% center; /* Sposta l'immagine verso destra di 5% */
-            }
-
-            .section:nth-of-type(5) {
-                background-image: url('background2-small-mobile.jpg');
-            }
-
-            /* Ridimensiona il testo del pulsante per schermi più piccoli */
             .button {
                 font-size: 18px; /* Riduce la dimensione del font del pulsante */
                 padding: 15px 30px; /* Riduce la spaziatura interna */
             }
         }
+
+        /* Footer personalizzato */
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
+
     <!-- Traccia audio -->
     <audio id="background-audio" loop>
         <source src="audio.mp3" type="audio/mpeg">
@@ -158,12 +125,25 @@
                     console.error("Errore nella riproduzione dell'audio:", error);
                 });
             });
+
+            // Fade in delle sezioni quando l'utente scorre
+            const sections = document.querySelectorAll('.section');
+            const fadeInOnScroll = () => {
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+                        section.classList.add('visible');
+                    }
+                });
+            };
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll(); // Per applicare il fade-in già al caricamento
         });
     </script>
 
     <!-- Prima sezione: Introduzione -->
     <div class="section" style="background-image: url('background-intro.jpg');">
-        <a href="#natale" class="button">Clicca per scoprire il tuo regalo</a>
+        <a href="#natale" class="button">Il tuo regalo ti aspetta, clicca per scoprire che cos'è.</a>
     </div>
 
     <!-- Seconda sezione: Buon Natale -->
@@ -190,5 +170,28 @@
             <p><strong>Orario:</strong> 21:30</p> <!-- Orario dell'evento -->
         </div>
     </div>
+
+    <!-- Countdown -->
+    <div id="countdown" class="section" style="background-color: rgba(0, 0, 0, 0.7);">
+        <h2 id="countdown-text">Manca 00 giorni al concerto!</h2>
+        <script>
+            const countdownText = document.getElementById('countdown-text');
+            const eventDate = new Date('2024-01-25T21:30:00');
+            const updateCountdown = () => {
+                const now = new Date();
+                const diff = eventDate - now;
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                countdownText.textContent = `Manca ${days} giorni al concerto!`;
+            };
+            setInterval(updateCountdown, 1000);
+            updateCountdown(); // Aggiorna subito
+        </script>
+    </div>
+
+    <!-- Footer personalizzato -->
+    <footer>
+        Con amore, per la mia persona speciale. Buon Natale!
+    </footer>
 </body>
 </html>
+
