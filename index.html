@@ -162,6 +162,30 @@
             window.addEventListener('scroll', fadeInOnScroll);
             fadeInOnScroll(); // Per applicare il fade-in già al caricamento
         });
+
+        // Countdown
+        const countdownText = document.getElementById('countdown-text');
+        const eventDate = new Date('2025-01-25T21:30:00'); // Data del concerto aggiornata
+
+        const updateCountdown = () => {
+            const now = new Date();
+            const diff = eventDate - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24)); // Calcola i giorni rimanenti
+
+            if (diff < 0) {
+                // Se la data del concerto è passata
+                countdownText.textContent = "Spero tanto ti sia piaciuto, ti amo";
+            } else if (diff <= (1000 * 60 * 60 * 24)) {
+                // Se il concerto è oggi
+                countdownText.textContent = "Il concerto è oggi";
+            } else {
+                // Se il concerto deve ancora arrivare
+                countdownText.textContent = `Manca ${days} giorni al concerto!`;
+            }
+        };
+
+        setInterval(updateCountdown, 1000); // Aggiorna il countdown ogni secondo
+        updateCountdown(); // Inizializza il countdown subito
     </script>
 
     <!-- Prima sezione: Introduzione -->
@@ -197,15 +221,8 @@
     <!-- Countdown -->
     <div id="countdown" class="section">
         <h2 id="countdown-text">Manca 00 giorni al concerto!</h2>
-        <script>
-            const countdownText = document.getElementById('countdown-text');
-            const eventDate = new Date('2025-01-25T21:30:00'); // Data del concerto aggiornata
-            const updateCountdown = () => {
-                const now = new Date();
-                const diff = eventDate - now;
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24)); // Calcola i giorni rimanenti
-                countdownText.textContent = `Manca ${days} giorni al concerto!`;
-            };
-            setInterval(updateCountdown, 1000);
-            update
+    </div>
+
+</body>
+</html>
 
