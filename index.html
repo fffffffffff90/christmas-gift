@@ -224,11 +224,42 @@
         </script>
     </div>
 
-    <!-- Footer personalizzato -->
+       <!-- Footer personalizzato -->
     <footer>
         Con amore, per la mia persona speciale. Buon Natale!
     </footer>
 
+    <!-- Script per aggiornare il footer -->
+    <script>
+        // Funzione per aggiornare il testo del footer in base alla data
+        function aggiornaFooter() {
+            const footer = document.querySelector('footer'); // Seleziona il footer
+            const now = new Date(); // Data e ora attuali
+
+            // Definizione delle date e testi corrispondenti
+            const dateRanges = [
+                { start: new Date('2024-12-14T00:00:00'), end: new Date('2024-12-31T23:59:59'), text: "Con amore, per la mia persona speciale. Buon Natale!" },
+                { start: new Date('2025-01-01T00:00:00'), end: new Date('2025-01-01T23:59:59'), text: "Buon anno amore mio, manca meno di un mese!" },
+                { start: new Date('2025-01-02T00:00:00'), end: new Date('2025-01-15T23:59:59'), text: "Amore mancano poche settimane!" },
+                { start: new Date('2025-01-16T00:00:00'), end: new Date('2025-01-16T23:59:59'), text: "Buon anniversario amore mio, ti amo da morire" },
+                { start: new Date('2025-01-17T00:00:00'), end: new Date('2025-01-24T23:59:59'), text: "Ormai manca pochissimo amore!" },
+                { start: new Date('2025-01-25T00:00:00'), end: new Date('2025-01-25T23:59:59'), text: "Oggi è il grande giorno amore, non vedo l'ora" },
+                { start: new Date('2025-01-26T00:00:00'), end: new Date('2100-01-01T00:00:00'), text: "Ti amo cndllght" }
+            ];
+
+            // Trova il testo appropriato in base alla data corrente
+            for (const range of dateRanges) {
+                if (now >= range.start && now <= range.end) {
+                    footer.textContent = range.text;
+                    break;
+                }
+            }
+        }
+
+        // Esegui la funzione subito e ogni minuto per assicurarsi che sia aggiornata
+        aggiornaFooter();
+        setInterval(aggiornaFooter, 1000 * 60); // Aggiorna ogni minuto
+    </script>
 </body>
 </html>
 
