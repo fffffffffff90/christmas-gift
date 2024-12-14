@@ -21,7 +21,7 @@
         /* Effetto fade in per le sezioni */
         .section {
             opacity: 0;
-            transition: opacity 2s ease-in-out, filter 2s ease-in-out; /* Aggiungi una transizione per il filtro (blur) */
+            transition: opacity 3s ease-in-out; /* Aumentato il tempo per una transizione più graduale */
             position: relative; /* Necessario per applicare il blur solo sullo sfondo */
         }
 
@@ -51,9 +51,9 @@
             right: 0;
             bottom: 0;
             background: inherit;
-            filter: blur(10px); /* Blur iniziale alto */
-            transition: filter 2s ease-in-out; /* Aggiungi una transizione fluida per il blur */
+            filter: blur(10px); /* Blur applicato solo allo sfondo */
             z-index: -1; /* Assicura che l'immagine sia dietro gli altri contenuti */
+            transition: filter 3s ease-in-out; /* Aggiunge la transizione per il blur */
         }
 
         /* Stile per il pulsante interattivo */
@@ -126,6 +126,8 @@
             background-position: center;
             color: white; /* Colore del testo */
             padding: 60px 0; /* Aggiungi un po' di padding per distanziare il contenuto */
+            text-align: center;
+            font-size: 32px;
         }
 
     </style>
@@ -163,30 +165,6 @@
             window.addEventListener('scroll', fadeInOnScroll);
             fadeInOnScroll(); // Per applicare il fade-in già al caricamento
         });
-
-        // Countdown
-        const countdownText = document.getElementById('countdown-text');
-        const eventDate = new Date('2025-01-25T21:30:00'); // Data del concerto aggiornata
-
-        const updateCountdown = () => {
-            const now = new Date();
-            const diff = eventDate - now;
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24)); // Calcola i giorni rimanenti
-
-            if (diff < 0) {
-                // Se la data del concerto è passata
-                countdownText.textContent = "Spero tanto ti sia piaciuto, ti amo";
-            } else if (diff <= (1000 * 60 * 60 * 24)) {
-                // Se il concerto è oggi
-                countdownText.textContent = "Il concerto è oggi";
-            } else {
-                // Se il concerto deve ancora arrivare
-                countdownText.textContent = `Manca ${days} giorni al concerto!`;
-            }
-        };
-
-        setInterval(updateCountdown, 1000); // Aggiorna il countdown ogni secondo
-        updateCountdown(); // Inizializza il countdown subito
     </script>
 
     <!-- Prima sezione: Introduzione -->
@@ -219,7 +197,37 @@
         </div>
     </div>
 
+    <!-- Countdown -->
+    <div id="countdown" class="section">
+        <h2 id="countdown-text">Manca 00 giorni al concerto!</h2>
+        <script>
+            const countdownText = document.getElementById('countdown-text');
+            const eventDate = new Date('2025-01-25T21:30:00'); // Data del concerto aggiornata
+            const updateCountdown = () => {
+                const now = new Date();
+                const diff = eventDate - now;
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24)); // Calcola i giorni rimanenti
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // Ore
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)); // Minuti
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000); // Secondi
 
+                if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) {
+                    countdownText.textContent = "Il concerto è oggi!";
+                } else if (diff < 0) {
+                    countdownText.textContent = "Spero tanto ti sia piaciuto, ti amo";
+                } else {
+                    countdownText.textContent = `Manca ${days} giorni ${hours} ore ${minutes} minuti e ${seconds} secondi al concerto!`;
+                }
+            };
+            setInterval(updateCountdown, 1000);
+            updateCountdown(); // Per applicare subito il countdown
+        </script>
+    </div>
+
+    <!-- Footer personalizzato -->
+    <footer>
+        Con amore, per la mia persona speciale. Buon Natale!
+    </footer>
 
 </body>
 </html>
