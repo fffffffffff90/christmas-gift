@@ -117,7 +117,13 @@
             text-align: center;
             font-size: 32px;
         }
-
+ #countdown h2 {
+            background-color: rgba(0, 0, 0, 0.6); /* Sfondo nero semi-trasparente */
+            display: inline-block; /* Adatta lo sfondo alla dimensione del testo */
+            padding: 15px 20px; /* Spaziatura intorno al testo */
+            border-radius: 10px; /* Angoli arrotondati */
+            color: white; /* Testo bianco */
+      }
     </style>
 </head>
 <body>
@@ -204,16 +210,15 @@
                 const seconds = Math.floor((diff % (1000 * 60)) / 1000); // Secondi
 
                 // Aggiorna il testo del countdown in base al tempo rimanente
-                if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) {
+                if (days <= 0 && hours <= 21 && minutes <= 30 && seconds <= 0) {
                     countdownText.textContent = "Il concerto è oggi!";
                 } else if (diff < 0) {
                     countdownText.textContent = "Spero tanto ti sia piaciuto, ti amo";
                 } else {
-                    countdownText.textContent = `Manca ${days} giorni ${hours} ore ${minutes} minuti e ${seconds} secondi al concerto!`;
+                    countdownText.textContent = `Mancano ${days} giorni ${hours} ore ${minutes} minuti e ${seconds} secondi al concerto!`;
                 }
             };
                         // Aggiornamento del countdown ogni secondo
-            setInterval(updateCountdown, 1000);
             setInterval(updateCountdown, 1000);
             updateCountdown(); // Per applicare subito il countdown
         </script>
