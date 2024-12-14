@@ -22,6 +22,7 @@
         .section {
             opacity: 0;
             transition: opacity 1s ease-in-out;
+            position: relative; /* Necessario per applicare il blur solo sullo sfondo */
         }
 
         /* Fade in quando la sezione è visibile */
@@ -39,7 +40,19 @@
             background-size: cover; /* Assicura che l'immagine copra tutta l'area */
             background-position: center; /* Centra l'immagine */
             background-repeat: no-repeat; /* Impedisce la ripetizione dell'immagine */
-            filter: blur(1px); /* Aggiungi effetto di sfocatura per il background */
+        }
+
+        /* Applicare il blur solo sulle immagini di sfondo */
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            filter: blur(3px); /* Blur applicato solo allo sfondo */
+            z-index: -1; /* Assicura che l'immagine sia dietro gli altri contenuti */
         }
 
         /* Stile per il pulsante interattivo */
@@ -194,4 +207,3 @@
     </footer>
 </body>
 </html>
-
