@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>   
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -45,13 +45,30 @@
         .button:hover {
             background-color: rgba(255, 165, 0, 0.8); /* Colore arancione acceso al passaggio del mouse */
         }
-        * Stile specifico per il pulsante nella sezione del biglietto */
-.ticket .button {
-    background-color: rgba(0, 0, 0, 0.6); /* Sfondo semi-trasparente */
-    border: 2px solid rgba(255, 165, 0, 0.8); /* Bordo arancione come gli altri pulsanti */
-}
 
-        /* Media query per dispositivi mobili */
+        /* Stile per il contenitore del biglietto */
+        .ticket {
+            background-color: rgba(0, 0, 0, 0.8); /* Sfondo nero semi-trasparente */
+            padding: 30px; /* Spaziatura interna */
+            border-radius: 15px; /* Angoli arrotondati */
+            text-align: left; /* Testo allineato a sinistra */
+            max-width: 400px; /* Larghezza massima del contenitore */
+            margin: auto; /* Centra il biglietto orizzontalmente */
+        }
+
+        .ticket h2 {
+            margin-bottom: 10px; /* Spaziatura inferiore per il titolo */
+        }
+
+        .ticket p {
+            margin-bottom: 5px; /* Spaziatura inferiore tra i paragrafi */
+        }
+
+        .ticket strong {
+            color: #ffa500; /* Colore arancione per evidenziare le informazioni importanti */
+        }
+
+       /* Media query per dispositivi mobili */
         @media (max-width: 768px) {
             .section {
                 background-attachment: scroll; /* Disabilita l'effetto fisso sui dispositivi mobili */
@@ -83,7 +100,7 @@
             .section:nth-of-type(5) {
                 background-image: url('background2-mobile.jpg');
             }
-        }
+        
 
         /* Media query per schermi ancora più piccoli (smartphone in modalità verticale) */
         @media (max-width: 480px) {
@@ -171,9 +188,7 @@
             <p><strong>Data:</strong> 25 gennaio</p> <!-- Data dell'evento -->
             <p><strong>Luogo:</strong> Firenze, Cattedrale dell'immagine</p> <!-- Luogo dell'evento -->
             <p><strong>Orario:</strong> 21:30</p> <!-- Orario dell'evento -->
-            <a href="#" class="button">Scopri di più</a> <!-- Pulsante con la classe button --
         </div>
     </div>
 </body>
 </html>
-
