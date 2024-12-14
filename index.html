@@ -117,6 +117,16 @@
             width: 100%;
             font-size: 18px;
         }
+
+        /* Stile specifico per la sezione del countdown */
+        #countdown {
+            background-image: url('countdown-background.jpg'); /* Aggiungi il percorso dell'immagine di background */
+            background-size: cover;
+            background-position: center;
+            color: white; /* Colore del testo */
+            padding: 60px 0; /* Aggiungi un po' di padding per distanziare il contenuto */
+        }
+
     </style>
 </head>
 <body>
@@ -185,7 +195,7 @@
     </div>
 
     <!-- Countdown -->
-    <div id="countdown" class="section" style="background-color: rgba(0, 0, 0, 0.7);">
+    <div id="countdown" class="section">
         <h2 id="countdown-text">Manca 00 giorni al concerto!</h2>
         <script>
             const countdownText = document.getElementById('countdown-text');
@@ -197,13 +207,5 @@
                 countdownText.textContent = `Manca ${days} giorni al concerto!`;
             };
             setInterval(updateCountdown, 1000);
-            updateCountdown(); // Aggiorna subito
-        </script>
-    </div>
+            update
 
-    <!-- Footer personalizzato -->
-    <footer>
-        Con amore, per la mia persona speciale. Buon Natale!
-    </footer>
-</body>
-</html>
