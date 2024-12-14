@@ -15,6 +15,7 @@
         body {
             font-family: Arial, sans-serif; /* Font leggibile e moderno */
             color: white; /* Testo in bianco per contrastare con lo sfondo */
+            overflow-x: hidden; /* Impedisce lo scorrimento orizzontale */
         }
 
         /* Stile per le sezioni che occupano tutta la schermata */
@@ -23,11 +24,10 @@
             justify-content: center; /* Centra orizzontalmente il contenuto */
             align-items: center; /* Centra verticalmente il contenuto */
             text-align: center;
-            height: 100vh; /* Altezza uguale a quella della finestra */
+            min-height: 100vh; /* Altezza minima per ogni sezione */
             background-size: cover; /* Assicura che l'immagine copra tutta l'area */
             background-position: center; /* Centra l'immagine */
             background-repeat: no-repeat; /* Impedisce la ripetizione dell'immagine */
-            height: auto; /* Consente all'immagine di adattarsi correttamente */
         }
 
         /* Stile per il pulsante interattivo */
@@ -72,7 +72,6 @@
         @media (max-width: 768px) {
             .section {
                 background-attachment: scroll; /* Disabilita l'effetto fisso sui dispositivi mobili */
-                height: auto; /* Permette alle immagini di adattarsi */
             }
 
             /* Impostazione delle immagini specifiche per schermi più piccoli */
@@ -102,7 +101,6 @@
             .section {
                 background-size: cover; /* Immagine di sfondo che copre interamente la sezione */
                 background-position: center; /* Centra l'immagine */
-                height: auto; /* Permette alle immagini di adattarsi */
             }
 
             .section:nth-of-type(1) {
@@ -185,3 +183,4 @@
     </div>
 </body>
 </html>
+
