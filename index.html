@@ -20,14 +20,16 @@
 
         /* Effetto fade in per le sezioni */
         .section {
-            opacity: 0;
-            transition: opacity 3s ease-in-out; /* Aumentato il tempo per una transizione più graduale */
-            position: relative; /* Necessario per applicare il blur solo sullo sfondo */
+            opacity: 0; /* Parte invisibile */
+            filter: blur(10px); /* Applica un effetto sfocato iniziale */
+            transition: opacity 3s ease-in-out, filter 3s ease-in-out; /* Transizioni per opacità e blur */
+            position: relative; /* Necessario per gestire correttamente i contenuti */
         }
 
         /* Fade in quando la sezione è visibile */
         .section.visible {
-            opacity: 1;
+            opacity: 1; /* Sezione completamente visibile */
+            filter: blur(0); /* Rimuove l'effetto sfocato */
         }
 
         /* Stile per le sezioni che occupano tutta la schermata */
@@ -40,20 +42,6 @@
             background-size: cover; /* Assicura che l'immagine copra tutta l'area */
             background-position: center; /* Centra l'immagine */
             background-repeat: no-repeat; /* Impedisce la ripetizione dell'immagine */
-        }
-
-        /* Applicare il blur solo sulle immagini di sfondo */
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: inherit;
-            filter: blur(10px); /* Blur applicato solo allo sfondo */
-            z-index: -1; /* Assicura che l'immagine sia dietro gli altri contenuti */
-            transition: filter 3s ease-in-out; /* Aggiunge la transizione per il blur */
         }
 
         /* Stile per il pulsante interattivo */
@@ -70,7 +58,7 @@
 
         .button:hover {
             background-color: rgba(255, 165, 0, 0.8); /* Colore arancione acceso al passaggio del mouse */
-            transform: scale(1.1); /* Rimbalzo */
+            transform: scale(1.1); /* Effetto "zoom" al passaggio del mouse */
         }
 
         /* Stile per il contenitore del biglietto */
@@ -109,7 +97,7 @@
 
         /* Footer personalizzato */
         footer {
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.8); /* Sfondo nero trasparente */
             color: white;
             padding: 20px;
             text-align: center;
@@ -146,6 +134,7 @@
             const audio = document.getElementById("background-audio");
             const firstButton = document.querySelector(".section a.button");
 
+            // Riproduce l'audio al clic del primo pulsante
             firstButton.addEventListener("click", () => {
                 audio.play().catch((error) => {
                     console.error("Errore nella riproduzione dell'audio:", error);
@@ -157,11 +146,14 @@
             const fadeInOnScroll = () => {
                 sections.forEach(section => {
                     const rect = section.getBoundingClientRect();
+                    // Controlla se la sezione è visibile nella finestra
                     if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-                        section.classList.add('visible');
+                        section.classList.add('visible'); // Aggiunge la classe per il fade-in
                     }
                 });
             };
+
+            // Assegna l'evento scroll per attivare l'effetto
             window.addEventListener('scroll', fadeInOnScroll);
             fadeInOnScroll(); // Per applicare il fade-in già al caricamento
         });
@@ -211,6 +203,7 @@
                 const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)); // Minuti
                 const seconds = Math.floor((diff % (1000 * 60)) / 1000); // Secondi
 
+                // Aggiorna il testo del countdown in base al tempo rimanente
                 if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) {
                     countdownText.textContent = "Il concerto è oggi!";
                 } else if (diff < 0) {
@@ -219,6 +212,8 @@
                     countdownText.textContent = `Manca ${days} giorni ${hours} ore ${minutes} minuti e ${seconds} secondi al concerto!`;
                 }
             };
+                        // Aggiornamento del countdown ogni secondo
+            setInterval(updateCountdown, 1000);
             setInterval(updateCountdown, 1000);
             updateCountdown(); // Per applicare subito il countdown
         </script>
