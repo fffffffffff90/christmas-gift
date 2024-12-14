@@ -147,16 +147,13 @@
     </audio>
 
     <script>
-        // Sblocca l'audio al primo clic su qualsiasi pulsante
-        document.addEventListener("DOMContentLoaded", () => {
+        
+        // Sblocca l'audio al primo clic su qualsiasi parte della pagina
+        document.addEventListener('click', () => {
             const audio = document.getElementById("background-audio");
-            const firstButton = document.querySelector(".section a.button");
-
-            // Riproduce l'audio al clic del primo pulsante
-            firstButton.addEventListener("click", () => {
-                audio.play().catch((error) => {
-                    console.error("Errore nella riproduzione dell'audio:", error);
-                });
+            audio.play().catch((error) => {
+                console.error("Errore nella riproduzione dell'audio:", error);
+            });
             });
 
             // Fade in delle sezioni quando l'utente scorre
