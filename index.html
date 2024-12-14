@@ -75,18 +75,22 @@
 
             /* Impostazione delle immagini specifiche per schermi più piccoli */
             .section:nth-of-type(1) {
-                background-image: url('background3-mobile.jpg');
+                background-image: url('background-start-mobile.jpg');
             }
 
             .section:nth-of-type(2) {
-                background-image: url('background4-mobile.jpg');
+                background-image: url('background3-mobile.jpg');
             }
 
             .section:nth-of-type(3) {
-                background-image: url('background1-mobile.jpg');
+                background-image: url('background4-mobile.jpg');
             }
 
             .section:nth-of-type(4) {
+                background-image: url('background1-mobile.jpg');
+            }
+
+            .section:nth-of-type(5) {
                 background-image: url('background2-mobile.jpg');
             }
         }
@@ -99,18 +103,22 @@
             }
 
             .section:nth-of-type(1) {
-                background-image: url('background3-small-mobile.jpg');
+                background-image: url('background-start-small-mobile.jpg');
             }
 
             .section:nth-of-type(2) {
-                background-image: url('background4-small-mobile.jpg');
+                background-image: url('background3-small-mobile.jpg');
             }
 
             .section:nth-of-type(3) {
-                background-image: url('background1-small-mobile.jpg');
+                background-image: url('background4-small-mobile.jpg');
             }
 
             .section:nth-of-type(4) {
+                background-image: url('background1-small-mobile.jpg');
+            }
+
+            .section:nth-of-type(5) {
                 background-image: url('background2-small-mobile.jpg');
             }
 
@@ -139,8 +147,13 @@
         });
     </script>
 
+    <!-- Sezione iniziale: Scopri il regalo -->
+    <div class="section" style="background-image: url('background-start.jpg');">
+        <a href="#natale" class="button">Clicca per scoprire il tuo regalo</a>
+    </div>
+
     <!-- Prima sezione: Buon Natale -->
-    <div class="section" style="background-image: url('background3.jpg');">
+    <div id="natale" class="section" style="background-image: url('background3.jpg');">
         <a href="#firenze" class="button">Buon natale amore, dovrai aspettare ancora un po' per ricevere il regalo</a>
     </div>
 
@@ -165,3 +178,4 @@
     </div>
 </body>
 </html>
+
