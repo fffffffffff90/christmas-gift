@@ -21,7 +21,7 @@
         /* Effetto fade in per le sezioni */
         .section {
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 2s ease-in-out; /* Aumentato il tempo per una transizione più graduale */
             position: relative; /* Necessario per applicare il blur solo sullo sfondo */
         }
 
@@ -189,11 +189,11 @@
         <h2 id="countdown-text">Manca 00 giorni al concerto!</h2>
         <script>
             const countdownText = document.getElementById('countdown-text');
-            const eventDate = new Date('2024-01-25T21:30:00');
+            const eventDate = new Date('2025-01-25T21:30:00'); // Data del concerto aggiornata
             const updateCountdown = () => {
                 const now = new Date();
                 const diff = eventDate - now;
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24)); // Calcola i giorni rimanenti
                 countdownText.textContent = `Manca ${days} giorni al concerto!`;
             };
             setInterval(updateCountdown, 1000);
