@@ -5,207 +5,238 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regalo di Natale - Candlelight</title>
     <style>
+        /* Resetta i margini e i padding per tutti gli elementi */
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            box-sizing: border-box; /* Garantisce il corretto calcolo delle dimensioni */
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            color: #fff;
-            overflow-x: hidden;
-            background-color: #fefefe;
+            font-family: Arial, sans-serif; /* Font leggibile e moderno */
+            color: white; /* Testo in bianco per contrastare con lo sfondo */
+            overflow-x: hidden; /* Impedisce lo scorrimento orizzontale */
         }
 
+        /* Effetto fade in per le sezioni */
+        .section {
+            opacity: 0; /* Parte invisibile */
+            filter: blur(10px); /* Applica un effetto sfocato iniziale */
+            transition: opacity 3s ease-in-out, filter 3s ease-in-out; /* Transizioni per opacità e blur */
+            position: relative; /* Necessario per gestire correttamente i contenuti */
+        }
+
+        /* Fade in quando la sezione è visibile */
+        .section.visible {
+            opacity: 1; /* Sezione completamente visibile */
+            filter: blur(0); /* Rimuove l'effetto sfocato */
+        }
+
+        /* Stile per le sezioni che occupano tutta la schermata */
         .section {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: center; /* Centra orizzontalmente il contenuto */
+            align-items: center; /* Centra verticalmente il contenuto */
             text-align: center;
-            min-height: 100vh;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-            opacity: 0;
-            filter: blur(10px);
-            transition: opacity 2s ease, filter 2s ease;
+            min-height: 100vh; /* Altezza minima per ogni sezione */
+            background-size: cover; /* Assicura che l'immagine copra tutta l'area */
+            background-position: center; /* Centra l'immagine */
+            background-repeat: no-repeat; /* Impedisce la ripetizione dell'immagine */
         }
 
-        .section.visible {
-            opacity: 1;
-            filter: blur(0);
-        }
-
+        /* Stile per il pulsante interattivo */
         .button {
-            background: linear-gradient(90deg, #ffd700, #ffa500);
-            padding: 20px 40px;
-            border-radius: 10px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 24px;
-            font-weight: bold;
-            transition: background 0.5s, transform 0.3s;
+            background-color: rgba(0, 0, 0, 0.6); /* Sfondo semi-trasparente */
+            padding: 20px 40px; /* Spaziatura interna del pulsante */
+            border-radius: 10px; /* Angoli arrotondati */
+            color: white; /* Colore del testo */
+            text-decoration: none; /* Rimuove la sottolineatura */
+            font-size: 24px; /* Dimensione del testo */
+            font-weight: bold; /* Testo in grassetto */
+            transition: background-color 0.3s, transform 0.2s; /* Aggiunta transizione per il "rimbalzo" */
         }
 
         .button:hover {
-            background: linear-gradient(90deg, #ffa500, #ffd700);
-            transform: scale(1.1);
+            background-color: rgba(255, 165, 0, 0.8); /* Colore arancione acceso al passaggio del mouse */
+            transform: scale(1.1); /* Effetto "zoom" al passaggio del mouse */
         }
 
+        /* Stile per il contenitore del biglietto */
         .ticket {
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: left;
-            max-width: 400px;
-            margin: auto;
-            color: #ffd700;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.8); /* Sfondo nero semi-trasparente */
+            padding: 30px; /* Spaziatura interna */
+            border-radius: 15px; /* Angoli arrotondati */
+            text-align: left; /* Testo allineato a sinistra */
+            max-width: 400px; /* Larghezza massima del contenitore */
+            margin: auto; /* Centra il biglietto orizzontalmente */
         }
 
         .ticket h2 {
-            margin-bottom: 15px;
+            margin-bottom: 10px; /* Spaziatura inferiore per il titolo */
         }
 
         .ticket p {
-            margin-bottom: 10px;
+            margin-bottom: 5px; /* Spaziatura inferiore tra i paragrafi */
         }
 
+        .ticket strong {
+            color: #ffa500; /* Colore arancione per evidenziare le informazioni importanti */
+        }
+
+        /* Media query per dispositivi mobili */
+        @media (max-width: 768px) {
+            .section {
+                background-attachment: scroll; /* Disabilita l'effetto fisso sui dispositivi mobili */
+            }
+
+            .button {
+                font-size: 18px; /* Riduce la dimensione del font del pulsante */
+                padding: 15px 30px; /* Riduce la spaziatura interna */
+            }
+        }
+
+        /* Footer personalizzato */
         footer {
-            background: linear-gradient(90deg, #000, #333);
-            color: #fff;
+            background-color: rgba(0, 0, 0, 0.8); /* Sfondo nero trasparente */
+            color: white;
             padding: 20px;
             text-align: center;
-            font-size: 16px;
             position: fixed;
             bottom: 0;
             width: 100%;
+            font-size: 18px;
         }
 
+        /* Stile specifico per la sezione del countdown */
         #countdown {
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 60px 20px;
+            background-image: url('countdown-background.jpg'); /* Aggiungi il percorso dell'immagine di background */
+            background-size: cover;
+            background-position: center;
+            color: white; /* Colore del testo */
+            padding: 60px 0; /* Aggiungi un po' di padding per distanziare il contenuto */
             text-align: center;
+            font-size: 32px;
         }
-
-        #countdown h2 {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 15px 25px;
-            border-radius: 10px;
-            display: inline-block;
-        }
-
-        h1, h2 {
-            font-weight: 600;
-        }
-
-        p {
-            line-height: 1.8;
-        }
-
-        @media (max-width: 768px) {
-            .button {
-                font-size: 18px;
-                padding: 15px 30px;
-            }
-
-            .ticket {
-                padding: 20px;
-            }
-        }
+ #countdown h2 {
+            background-color: rgba(0, 0, 0, 0.6); /* Sfondo nero semi-trasparente */
+            display: inline-block; /* Adatta lo sfondo alla dimensione del testo */
+            padding: 15px 20px; /* Spaziatura intorno al testo */
+            border-radius: 10px; /* Angoli arrotondati */
+            color: white; /* Testo bianco */
+      }
     </style>
 </head>
 <body>
 
+    <!-- Traccia audio -->
     <audio id="background-audio" loop>
         <source src="audio.mp3" type="audio/mpeg">
         Il tuo browser non supporta il tag audio.
     </audio>
 
     <script>
+        // Sblocca l'audio al primo clic su qualsiasi pulsante
         document.addEventListener("DOMContentLoaded", () => {
             const audio = document.getElementById("background-audio");
             const firstButton = document.querySelector(".section a.button");
 
+            // Riproduce l'audio al clic del primo pulsante
             firstButton.addEventListener("click", () => {
-                audio.play().catch((error) => console.error("Errore nella riproduzione dell'audio:", error));
+                audio.play().catch((error) => {
+                    console.error("Errore nella riproduzione dell'audio:", error);
+                });
             });
 
+            // Fade in delle sezioni quando l'utente scorre
             const sections = document.querySelectorAll('.section');
             const fadeInOnScroll = () => {
                 sections.forEach(section => {
                     const rect = section.getBoundingClientRect();
+                    // Controlla se la sezione è visibile nella finestra
                     if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-                        section.classList.add('visible');
+                        section.classList.add('visible'); // Aggiunge la classe per il fade-in
                     }
                 });
             };
 
+            // Assegna l'evento scroll per attivare l'effetto
             window.addEventListener('scroll', fadeInOnScroll);
-            fadeInOnScroll();
+            fadeInOnScroll(); // Per applicare il fade-in già al caricamento
         });
     </script>
 
+    <!-- Prima sezione: Introduzione -->
     <div class="section" style="background-image: url('background-intro.jpg');">
         <a href="#natale" class="button">Il tuo regalo ti aspetta, clicca per scoprire che cos'è.</a>
     </div>
 
+    <!-- Seconda sezione: Buon Natale -->
     <div id="natale" class="section" style="background-image: url('background3.jpg');">
         <a href="#firenze" class="button">Buon natale amore, dovrai aspettare ancora un po' per ricevere il tuo regalo</a>
     </div>
 
+    <!-- Terza sezione: Firenze -->
     <div id="firenze" class="section" style="background-image: url('background4.jpg');">
         <a href="#data" class="button">Firenze</a>
     </div>
 
+    <!-- Quarta sezione: 25 gennaio -->
     <div id="data" class="section" style="background-image: url('background1.jpg');">
         <a href="#biglietto" class="button">25 gennaio</a>
     </div>
 
+    <!-- Quinta sezione: Biglietto del concerto -->
     <div id="biglietto" class="section" style="background-image: url('background2.jpg');">
         <div class="ticket">
-            <h2>Candlelight Ticket</h2>
-            <p><strong>Data:</strong> 25 gennaio</p>
-            <p><strong>Luogo:</strong> Firenze, Cattedrale dell'immagine</p>
-            <p><strong>Orario:</strong> 21:30</p>
+            <h2>Candlelight Ticket</h2> <!-- Titolo del biglietto -->
+            <p><strong>Data:</strong> 25 gennaio</p> <!-- Data dell'evento -->
+            <p><strong>Luogo:</strong> Firenze, Cattedrale dell'immagine</p> <!-- Luogo dell'evento -->
+            <p><strong>Orario:</strong> 21:30</p> <!-- Orario dell'evento -->
         </div>
     </div>
 
+    <!-- Countdown -->
     <div id="countdown" class="section">
         <h2 id="countdown-text">Manca 00 giorni al concerto!</h2>
         <script>
             const countdownText = document.getElementById('countdown-text');
-            const eventDate = new Date('2025-01-25T21:30:00');
+            const eventDate = new Date('2025-01-25T21:30:00'); // Data del concerto aggiornata
             const updateCountdown = () => {
                 const now = new Date();
                 const diff = eventDate - now;
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24)); // Calcola i giorni rimanenti
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // Ore
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)); // Minuti
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000); // Secondi
 
-                if (diff < 0) {
+                // Aggiorna il testo del countdown in base al tempo rimanente
+                if (days <= 0 && hours <= 21 && minutes <= 30 && seconds <= 0) {
+                    countdownText.textContent = "Il concerto è oggi!";
+                } else if (diff < 0) {
                     countdownText.textContent = "Spero tanto ti sia piaciuto, ti amo";
                 } else {
-                    countdownText.textContent = `Mancano ${days} giorni ${hours} ore ${minutes} minuti e ${seconds} secondi al concerto`;
+                    countdownText.textContent = Mancano ${days} giorni ${hours} ore ${minutes} minuti e ${seconds} secondi al concerto;
                 }
             };
+                        // Aggiornamento del countdown ogni secondo
             setInterval(updateCountdown, 1000);
-            updateCountdown();
+            updateCountdown(); // Per applicare subito il countdown
         </script>
     </div>
 
+       <!-- Footer personalizzato -->
     <footer>
         Con amore, per la mia persona speciale. Buon Natale!
     </footer>
 
+    <!-- Script per aggiornare il footer -->
     <script>
+        // Funzione per aggiornare il testo del footer in base alla data
         function aggiornaFooter() {
-            const footer = document.querySelector('footer');
-            const now = new Date();
+            const footer = document.querySelector('footer'); // Seleziona il footer
+            const now = new Date(); // Data e ora attuali
+
+            // Definizione delle date e testi corrispondenti
             const dateRanges = [
                 { start: new Date('2024-12-14T00:00:00'), end: new Date('2024-12-31T23:59:59'), text: "Con amore, per la mia persona speciale. Buon Natale!" },
                 { start: new Date('2025-01-01T00:00:00'), end: new Date('2025-01-01T23:59:59'), text: "Buon anno amore mio, manca meno di un mese!" },
@@ -216,6 +247,7 @@
                 { start: new Date('2025-01-26T00:00:00'), end: new Date('2100-01-01T00:00:00'), text: "Ti amo cndllght" }
             ];
 
+            // Trova il testo appropriato in base alla data corrente
             for (const range of dateRanges) {
                 if (now >= range.start && now <= range.end) {
                     footer.textContent = range.text;
@@ -223,9 +255,10 @@
                 }
             }
         }
+
+        // Esegui la funzione subito e ogni minuto per assicurarsi che sia aggiornata
         aggiornaFooter();
-        setInterval(aggiornaFooter, 1000 * 60);
+        setInterval(aggiornaFooter, 1000 * 60); // Aggiorna ogni minuto
     </script>
 </body>
 </html>
-
