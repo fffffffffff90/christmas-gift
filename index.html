@@ -55,23 +55,6 @@
             font-weight: bold; /* Testo in grassetto */
             transition: background-color 0.3s, transform 0.2s; /* Aggiunta transizione per il "rimbalzo" */
         }
-         /* Effetto hover con animazione */
-        .button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(120deg, rgba(255, 165, 0, 0.6), transparent);
-            opacity: 0; /* Invisibile all'inizio */
-            transition: opacity 0.5s ease-in-out; /* Transizione per l'effetto hover */
-            border-radius: 10px; /* Segue la forma del pulsante */
-        }
-
-        .button:hover::before {
-            opacity: 1; /* Visibile al passaggio del mouse */
-        }
 
         .button:hover {
             background-color: rgba(255, 165, 0, 0.8); /* Colore arancione acceso al passaggio del mouse */
@@ -232,7 +215,7 @@
                 } else if (diff < 0) {
                     countdownText.textContent = "Spero tanto ti sia piaciuto, ti amo";
                 } else {
-                    countdownText.textContent = `Mancano ${days} giorni ${hours} ore ${minutes} minuti e ${seconds} secondi al concerto`;
+                    countdownText.textContent = Mancano ${days} giorni ${hours} ore ${minutes} minuti e ${seconds} secondi al concerto;
                 }
             };
                         // Aggiornamento del countdown ogni secondo
